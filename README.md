@@ -2,28 +2,34 @@
 
 Java 8
 
+PostgreSQL 8.4 +
+
+Lombok plugin (for IDE)
+
 
 **Install and setup PostgreSQL**
 
-[MacOS]
+For MacOS:
 
-Install
-brew install postgres
+```brew install postgres```
 
 Start PostgreSQL server
-pg_ctl -D /usr/local/var/postgres start
+
+```pg_ctl -D /usr/local/var/postgres start```
 
 Create Database
-createdb momentteam
+
+```createdb momentteam```
 
 Create user
-psql momentteam
-CREATE ROLE momentdemo WITH LOGIN PASSWORD '12345';
-\q
+
+```psql momentteam```
+```CREATE ROLE momentdemo WITH LOGIN PASSWORD '12345';```
+```\q```
 
 
 **Running**
 
-mvn clean install
+```mvn clean install```
 
-mvn spring-boot:run
+```mvn spring-boot:run```
