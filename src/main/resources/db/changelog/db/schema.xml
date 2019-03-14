@@ -1,0 +1,27 @@
+<changeSet author="OlegG" id="create-product-sale-structure">
+
+  <createTable tableName="product" remarks="Products table">
+    <column name="id" type="bigint" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false" />
+    </column>
+    <column name="name" type="varchar(255)">
+      <constraints nullable="false" />
+    </column>
+    <column name="number" type="varchar(50)"/>
+    <column name="price" type="NUMERIC(2)"/>
+  </createTable>
+
+  <createTable tableName="sale" remarks="Sales table">
+    <column name="id" type="BIGINT" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false" />
+    </column>
+    <column name="quantity" type="int"/>
+    <column name="price" type="NUMERIC(2)"/>
+    <column name="discount" type="int"/>
+    <column name="sale_date" type="timestamp"/>
+    <column name="product_id" type="bigint">
+      <constraints nullable="false" foreignKeyName="fk_product_sale" references="product(id)"/>
+    </column>
+  </createTable>
+
+</changeSet>

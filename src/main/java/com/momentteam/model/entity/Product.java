@@ -37,7 +37,7 @@ public class Product {
   @Column(name = "price")
   private BigDecimal price;
 
-  @OneToMany(mappedBy = "sale")
+  @OneToMany(mappedBy = "product")
   private Set<Sale> sales;
 
 }
