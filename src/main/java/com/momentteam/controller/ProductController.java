@@ -21,18 +21,23 @@ public class ProductController {
   @Autowired
   private ProductService productService;
 
-  @RequestMapping(method = POST, path = "/")
+  @RequestMapping(method = GET)
+  public Iterable<Product> getAll() {
+    return productService.findAll();
+  }
+
+  @RequestMapping(method = POST)
   public Product create(@RequestBody Product product) {
     return productService.save(product);
   }
 
   @RequestMapping(method = PUT, path = "/{id}")
-  public Product update(@PathVariable(value = "name") @NotNull long id, @RequestBody Product product) {
+  public Product update(@PathVariable(value = "id") @NotNull long id, @RequestBody Product product) {
     return productService.save(product);
   }
 
   @RequestMapping(method = GET, path = "/{id}")
-  public Product get(@PathVariable(value = "name") @NotNull long id) {
+  public Product get(@PathVariable(value = "id") @NotNull long id) {
     Optional<Product> optionalProduct = productService.findById(id);
     return optionalProduct.isPresent() ? optionalProduct.get() : null;
   }
