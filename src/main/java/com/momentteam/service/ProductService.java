@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ProductService {
 
-  Product create(Product product);
+  Product save(Product product);
 
   Iterable<Product> findAll();
 
