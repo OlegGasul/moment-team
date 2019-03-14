@@ -2,24 +2,37 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-  <changeSet author="OlegG" id="create-product-sale-structure">
+  <changeSet author="OlegG" id="create product table">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="product"/>
+      </not>
+    </preConditions>
 
     <createTable tableName="product" remarks="Products table">
-      <column name="id" type="bigint" autoIncrement="true">
+      <column name="id" type="serial" autoIncrement="true">
         <constraints primaryKey="true" nullable="false"/>
       </column>
       <column name="name" type="varchar(255)">
         <constraints nullable="false"/>
       </column>
       <column name="number" type="varchar(50)"/>
-      <column name="price" type="numeric(2)"/>
+      <column name="price" type="decimal"/>
     </createTable>
+  </changeSet>
+
+  <changeSet author="OlegG" id="create sale table">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="sale"/>
+      </not>
+    </preConditions>
 
     <createTable tableName="sale" remarks="Sales table">
-      <column name="id" type="BIGINT" autoIncrement="true">
+      <column name="id" type="serial" autoIncrement="true">
         <constraints primaryKey="true" nullable="false"/>
       </column>
-      <column name="price" type="numeric(2)"/>
+      <column name="price" type="decimal"/>
       <column name="quantity" type="int"/>
       <column name="discount" type="int"/>
       <column name="sale_date" type="timestamp"/>
@@ -27,6 +40,6 @@
         <constraints nullable="false" foreignKeyName="fk_product_sale" references="product(id)"/>
       </column>
     </createTable>
-
   </changeSet>
+
 </databaseChangeLog>
