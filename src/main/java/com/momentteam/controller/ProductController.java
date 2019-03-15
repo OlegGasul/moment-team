@@ -36,7 +36,7 @@ public class ProductController {
   public Product update(@PathVariable(value = "id") @NotNull long id, @RequestBody Product product) {
     Optional<Product> optionalProduct = productService.findById(id);
     if (!optionalProduct.isPresent()) {
-      throw new ProductNotFoundException("Product with ID = " + id + " not found");
+      throwProductNotFoundException(id);
     }
 
     Product toSave = Product.builder()
@@ -54,10 +54,14 @@ public class ProductController {
   public Product get(@PathVariable(value = "id") @NotNull long id) {
     Optional<Product> optionalProduct = productService.findById(id);
     if (!optionalProduct.isPresent()) {
-      throw new ProductNotFoundException("Product with ID = " + id + " not found");
+      throwProductNotFoundException(id);
     }
 
     return optionalProduct.get();
+  }
+
+  private void throwProductNotFoundException(long id) {
+    throw new ProductNotFoundException("Product with ID = " + id + " not found");
   }
 
 }
