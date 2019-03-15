@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -47,6 +48,7 @@ public class Sale {
   private Long quantity;
 
   @Min(value = 0, message = "Discount should non negative")
+  @Max(value = 100, message = "Discount should be 100% maximum")
   private BigDecimal discount = BigDecimal.ZERO;
 
   @NotNull(message = "Sale date should be not null")
@@ -61,7 +63,7 @@ public class Sale {
 
   public BigDecimal getTotalPrice() {
     if (discount.compareTo(BigDecimal.ZERO) > 0) {
-      return price.multiply(BigDecimal.valueOf(quantity)).multiply(discount).divide(ONE_HUNDRED);
+      return price.multiply(BigDecimal.valueOf(quantity)).multiply(ONE_HUNDRED.subtract(discount)).divide(ONE_HUNDRED);
     } else {
       return price.multiply(BigDecimal.valueOf(quantity));
     }

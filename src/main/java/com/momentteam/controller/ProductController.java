@@ -34,7 +34,20 @@ public class ProductController {
 
   @RequestMapping(method = PUT, path = "/{id}")
   public Product update(@PathVariable(value = "id") @NotNull long id, @RequestBody Product product) {
-    return productService.save(product);
+    Optional<Product> optionalProduct = productService.findById(id);
+    if (!optionalProduct.isPresent()) {
+      throw new ProductNotFoundException("Product with ID = " + id + " not found");
+    }
+
+    Product toSave = Product.builder()
+        .id(id)
+        .name(product.getName())
+        .number(product.getNumber())
+        .price(product.getPrice())
+        .sales(product.getSales())
+        .build();
+
+    return productService.save(toSave);
   }
 
   @RequestMapping(method = GET, path = "/{id}")
