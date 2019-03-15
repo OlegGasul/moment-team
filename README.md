@@ -29,6 +29,10 @@ or just download zip file
 
 ### Running
 
+1. Set database connection parameters in ```application.properties```
+
+2. Execute in command line
+
 ```mvn clean install```
 
 ```mvn spring-boot:run```
