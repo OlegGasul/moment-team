@@ -52,3 +52,11 @@ curl --header "Content-Type: application/json" \
 
 ### Get product by id
 ```curl http://localhost:8080/product/1```
+
+### Update product
+```
+curl --header "Content-Type: application/json" \
+  --request PUT \
+  --data '{"id": 1, "name": "Product 1", "number": "1", "price": 100, "sales": []}' \
+  http://localhost:8080/product/1
+```
