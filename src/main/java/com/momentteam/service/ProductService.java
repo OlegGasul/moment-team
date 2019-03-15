@@ -1,6 +1,7 @@
 package com.momentteam.service;
 
 import com.momentteam.model.entity.Product;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
@@ -12,5 +13,7 @@ public interface ProductService {
   Iterable<Product> findAll();
 
   Optional<Product> findById(long id);
+
+  List<Product> searchByName(String name);
 
 }

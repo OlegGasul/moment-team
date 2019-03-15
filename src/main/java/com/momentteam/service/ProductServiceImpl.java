@@ -2,6 +2,7 @@ package com.momentteam.service;
 
 import com.momentteam.model.ProductRepository;
 import com.momentteam.model.entity.Product;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,10 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public Optional<Product> findById(long id) {
     return productRepository.findById(id);
+  }
+
+  @Override
+  public List<Product> searchByName(String name) {
+    return productRepository.findByNameIgnoreCaseContaining(name);
   }
 }
