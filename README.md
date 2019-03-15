@@ -60,3 +60,11 @@ curl --header "Content-Type: application/json" \
   --data '{"id": 1, "name": "Product 1", "number": "1", "price": 100, "sales": []}' \
   http://localhost:8080/product/1
 ```
+
+### Create product with sales
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"name": "Product 2", "number": "2", "price": 100, "sales": [{"price": 100, "quantity": 1, "discount": 20, "saleDate": "2019-03-01T10:00:00"}, {"price": 100, "quantity": 10, "discount": 30, "saleDate": "2019-03-05T10:00:00"} ]}' \
+  http://localhost:8080/product
+```
