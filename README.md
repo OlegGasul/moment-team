@@ -1,34 +1,33 @@
-**Dependencies**
+## Dependencies 
+1. JDK - 1.8
+2. PostgreSQL - 8.4 +
+3. Maven - 3.6.0 +
+4. Lombok plugin (for IDEA https://plugins.jetbrains.com/plugin/6317-lombok-plugin)
 
-Java 8
+## Install and setup
 
-PostgreSQL 8.4 +
+### Clone application
 
-Lombok plugin (for IDE)
+```git clone git@github.com:OlegGasul/moment-team.git```
 
+or just download zip file
 
-**Install and setup PostgreSQL**
-
-For MacOS:
+### Setup PostgreSQL
+[MacOS]
 
 ```brew install postgres```
 
-Start PostgreSQL server
-
 ```pg_ctl -D /usr/local/var/postgres start```
-
-Create Database
 
 ```createdb momentteam```
 
-Create user
-
 ```psql momentteam```
+
 ```CREATE ROLE momentdemo WITH LOGIN PASSWORD '12345';```
+
 ```\q```
 
-
-**Running**
+### Running
 
 ```mvn clean install```
 
