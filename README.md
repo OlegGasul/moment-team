@@ -36,3 +36,18 @@ or just download zip file https://github.com/OlegGasul/moment-team/archive/maste
 ```mvn clean install```
 
 ```mvn spring-boot:run```
+
+## Using
+
+### Create product
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"name": "Product 1", "number": "1", "price": 100, "sales": []}' \
+  http://localhost:8080/product
+```
+
+### Get all products
+```curl http://localhost:8080/product```
+
+
