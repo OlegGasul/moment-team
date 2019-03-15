@@ -4,6 +4,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
+import com.momentteam.exception.ProductNotFoundException;
 import com.momentteam.model.entity.Product;
 import com.momentteam.service.ProductService;
 import java.util.Optional;
@@ -39,7 +40,11 @@ public class ProductController {
   @RequestMapping(method = GET, path = "/{id}")
   public Product get(@PathVariable(value = "id") @NotNull long id) {
     Optional<Product> optionalProduct = productService.findById(id);
-    return optionalProduct.isPresent() ? optionalProduct.get() : null;
+    if (!optionalProduct.isPresent()) {
+      throw new ProductNotFoundException("Product with ID = " + id + " not found");
+    }
+
+    return optionalProduct.get();
   }
 
 }
