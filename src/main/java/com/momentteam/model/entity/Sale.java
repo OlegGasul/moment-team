@@ -39,7 +39,7 @@ public class Sale {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @Min(value = 0, message = "Price should non negative")
+  @Min(value = 0, message = "Price should be non negative")
   @NotNull(message = "Price should be not null")
   private BigDecimal price;
 
@@ -47,7 +47,7 @@ public class Sale {
   @NotNull(message = "Quantity should be not null")
   private Long quantity;
 
-  @Min(value = 0, message = "Discount should non negative")
+  @Min(value = 0, message = "Discount should be non negative")
   @Max(value = 100, message = "Discount should be 100% maximum")
   private BigDecimal discount = BigDecimal.ZERO;
 

@@ -33,7 +33,7 @@ public class Product {
 
   private String number;
 
-  @Min(value = 0, message = "Price should non negative")
+  @Min(value = 0, message = "Price should be non negative")
   private BigDecimal price;
 
   @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
