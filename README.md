@@ -10,7 +10,7 @@
 
 ```git clone git@github.com:OlegGasul/moment-team.git```
 
-or just download zip file
+or just download zip file https://github.com/OlegGasul/moment-team/archive/master.zip
 
 ### Setup PostgreSQL
 [MacOS]
