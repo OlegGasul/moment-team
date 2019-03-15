@@ -50,4 +50,5 @@ curl --header "Content-Type: application/json" \
 ### Get all products
 ```curl http://localhost:8080/product```
 
-
+### Get product by id
+```curl http://localhost:8080/product/1```
