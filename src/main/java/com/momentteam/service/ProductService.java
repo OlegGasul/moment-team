@@ -1,10 +1,8 @@
 package com.momentteam.service;
 
 import com.momentteam.model.entity.Product;
-import com.momentteam.model.entity.Sale;
 import com.momentteam.model.report.SalePeriodResponse;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
