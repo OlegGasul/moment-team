@@ -4,32 +4,4 @@
 
   <include file="db/schema.xml" />
 
-  <changeSet author="OlegG" id="Add total price column">
-    <preConditions onFail="MARK_RAN">
-      <not>
-        <columnExists columnName="total_price" tableName="sale"/>
-      </not>
-    </preConditions>
-
-    <addColumn tableName="sale">
-      <column name="total_price" type="decimal" defaultValue="null"/>
-    </addColumn>
-  </changeSet>
-
-  <changeSet author="OlegG" id="Update total prices with discount">
-    <preConditions onFail="MARK_RAN">
-      <not>
-        <sqlCheck expectedResult="0">
-          SELECT count(*)
-          FROM sale
-          WHERE total_price IS NULL;
-        </sqlCheck>
-      </not>
-    </preConditions>
-
-    <sql>
-      UPDATE sale SET total_price = price * quantity * ((100.0 - discount) / 100.0);
-    </sql>
-  </changeSet>
-
 </databaseChangeLog>
