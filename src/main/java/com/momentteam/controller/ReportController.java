@@ -5,6 +5,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import com.momentteam.model.report.SalePeriodResponse;
 import com.momentteam.service.ProductService;
 import java.time.LocalDate;
+import java.util.List;
 import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +30,16 @@ public class ReportController {
       @DateTimeFormat(pattern = "yyyy-MM-dd")
       LocalDate dateTo) {
     return productService.searchForSales(id, dateFrom, dateTo);
+  }
+
+  @RequestMapping(method = GET, path = "/product/sales")
+  public List<SalePeriodResponse> get(@RequestParam(name = "dateFrom")
+      @DateTimeFormat(pattern = "yyyy-MM-dd")
+      LocalDate dateFrom,
+      @RequestParam(name = "dateTo")
+      @DateTimeFormat(pattern = "yyyy-MM-dd")
+      LocalDate dateTo) {
+    return productService.searchForSales(dateFrom, dateTo);
   }
 
 }
