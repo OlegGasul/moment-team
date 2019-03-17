@@ -61,12 +61,13 @@ public class Sale {
   @JsonBackReference()
   private Product product;
 
-  public BigDecimal getTotalPrice() {
-    if (discount.compareTo(BigDecimal.ZERO) > 0) {
-      return price.multiply(BigDecimal.valueOf(quantity)).multiply(ONE_HUNDRED.subtract(discount)).divide(ONE_HUNDRED);
-    } else {
-      return price.multiply(BigDecimal.valueOf(quantity));
-    }
+  @Min(value = 0, message = "Price should be non negative")
+  @NotNull(message = "Total price should be not null")
+  @Column(name = "total_price")
+  private BigDecimal totalPrice = BigDecimal.ZERO;
+
+  public void updateTotalPrice() {
+    totalPrice = price.multiply(ONE_HUNDRED.subtract(discount).divide(ONE_HUNDRED));
   }
 
 }
