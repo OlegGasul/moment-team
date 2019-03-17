@@ -61,7 +61,7 @@ public class ProductController {
   }
 
   private void throwProductNotFoundException(long id) {
-    throw new ProductNotFoundException(id);
+    throw new ProductNotFoundException("Product with ID = " + id + " not found");
   }
 
 }
