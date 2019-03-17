@@ -20,7 +20,11 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public Product save(Product product) {
-    product.getSales().forEach(sale -> sale.setProduct(product));
+    product.getSales().forEach(sale -> {
+      sale.setProduct(product);
+      sale.updateTotalPrice();
+    });
+
     return productRepository.save(product);
   }
 
