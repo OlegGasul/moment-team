@@ -1,6 +1,8 @@
 package com.momentteam.service;
 
 import com.momentteam.model.entity.Product;
+import com.momentteam.model.report.SalePeriodResponse;
+import java.time.LocalDate;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
@@ -12,5 +14,7 @@ public interface ProductService {
   Iterable<Product> findAll();
 
   Optional<Product> findById(long id);
+
+  SalePeriodResponse searchForSales(long productId, LocalDate dateFrom, LocalDate dateTo);
 
 }
