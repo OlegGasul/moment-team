@@ -68,3 +68,17 @@ curl --header "Content-Type: application/json" \
   --data '{"name": "Product 2", "number": "2", "price": 100, "sales": [{"price": 100, "quantity": 1, "discount": 20, "saleDate": "2019-03-01T10:00:00"}, {"price": 100, "quantity": 10, "discount": 30, "saleDate": "2019-03-05T10:00:00"} ]}' \
   http://localhost:8080/product
 ```
+
+### Reporting
+
+#### All sales for period
+
+```
+curl http://localhost:8080/report/product/sales?dateFrom=2019-03-01&dateTo=2019-03-06
+```
+
+#### Sales for period for selected product
+
+```
+curl http://localhost:8080/report/product/sales/11?dateFrom=2019-03-01&dateTo=2019-03-06
+```
