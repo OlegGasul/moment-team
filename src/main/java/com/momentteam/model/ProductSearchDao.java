@@ -5,25 +5,25 @@ import com.momentteam.model.search.SaleSearchFilter;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class ProductSearchDao {
 
-  @Autowired
-  protected SessionFactory sessionFactory;
+  @PersistenceContext
+  EntityManager entityManager;
 
   @Transactional
   public List<Sale> searchForSales(SaleSearchFilter filter) {
-    Session session = sessionFactory.getCurrentSession();
+    Session session = entityManager.unwrap(Session.class);
 
     CriteriaBuilder builder = session.getCriteriaBuilder();
     CriteriaQuery<Sale> query = builder.createQuery(Sale.class);
